@@ -76,15 +76,14 @@ This project documents the end-to-end security hardening and deployment of a per
 <summary><b>Click to Expand: FIS SDLC Phase Details</b></summary>
 
 Drawing from my Financial Information Systems (FIS) qualification, I applied the Systems Development Life Cycle (SDLC) to manage the project flow from concept to completion. This ensures a professional, requirements-driven foundation suitable for audited corporate and financial environments.
-
 | SDLC Phase | Technical Project Application |
 | :--- | :--- |
-| **1. Planning** | Defined project scope to support high-density virtualization; set requirements for 6C/12T architecture and 16GB DDR4 RAM. |
-| **2. Analysis** | Conducted hardware gap analysis; identified that legacy Celeron architecture lacked SLAT/VT-x support (NPT/AMD-V). |
-| **3. Design** | Developed logical system architecture; utilized Cisco Packet Tracer to map the connection between the Rain Router and host via Cat6. |
-| **4. Implementation** | Managed physical component assembly and Thermal Management; executed OS deployment and established Layer 1 physical link. |
-| **5. Testing** | Performed Verification & Validation (V&V); conducted Hardware stress-testing (POST/MemTest86) and validated TPM 2.0/UEFI integrity. |
-| **6. Maintenance** | Established Continuous Monitoring via Windows Event Viewer (Logging) and automated patch management |
+| **1. Planning** | Defined project scope to support high-density virtualization; set requirements for 6C/12T architecture, 16GB DDR4 RAM,6GB GPU and SSD storage. |
+| **2. Analysis** | Conducted hardware gap analysis comparing the legacy Celeron platform with the required architecture; identified virtualization requirements (SLAT and hardware-assisted virtualization support); assessed hardware, OS, security, and networking requirements. |
+| **3. Design** | Developed the system architecture covering hardware components, OS deployment and partitioning, and security hardening; used Cisco Packet Tracer to map the network architecture and the Rain Router-to-host connection via Cat6. |
+| **4. Implementation** | Completed physical PC assembly and cable management; implemented thermal management; deployed and configured the operating system (`ZAF-PTA-WS01` provisioning, drivers, System Restore baseline, and baseline software/peripherals); established the Layer 1 Ethernet connection; documented installed components in the IT asset register. |
+| **5. Testing & Validation** | Performed Verification & Validation (V&V), including POST and MemTest86 hardware testing; validated TPM 2.0, UEFI, and Secure Boot configuration; conducted sustained-load thermal testing (65°C–72°C) and verified OS, security, and network configuration. |
+| **6. Maintenance & Monitoring** | Established continuous monitoring using Windows Event Viewer and Sysmon; maintained the IT asset register and hardware records; performed vulnerability and configuration monitoring (including Defender scans and Nessus/OpenVAS); maintained patching and ongoing security controls. |
 
 ![Image 2: Detailed SDLC Model Diagram]
 
