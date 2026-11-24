@@ -111,7 +111,7 @@ Drawing from my Financial Information Systems (FIS) qualification, I applied the
 5. **Layer 1 Infrastructure:** Deployment of physical Cat6 Ethernet for a stable, high-bandwidth link.
 6. **Firmware Hardening:** Establishing Hardware Root of Trust via TPM 2.0 and UEFI Secure Boot.
 7. **Hardware Validation:** Verification of vitals, RAM speeds, and thermal stability under high virtualization load.
-  - Validation: Sustained CPU temperature under load: 65–72°C.
+- Validation: Sustained CPU temperature under load: 65–72°C.
   - Validation: Zero POST or memory faults after 12-hour stress test.
 8. **Electrical Hardening:** Implemented external Surge Safe Power Protection to provide MOV suppression.
 ![Image 4: Physical PC Interior/Cabling]
@@ -120,22 +120,27 @@ Drawing from my Financial Information Systems (FIS) qualification, I applied the
 ### Phase 3: Enterprise Workstation Provisioning & Configuration
 Following hardware assembly and firmware validation, the workstation was provisioned according to enterprise deployment practices to mirror corporate operational and end-user delivery standards.
 9. **Operating System Deployment & Governance:**
-  - Installed Windows 11 Pro from bootable USB installation media and configured default storage partitions.
-  - **Enterprise Naming Convention:** Renamed the computer from default naming strings to a standardized asset format (`ZAF-JHB-WS01`) for inventory and tracking.
+- Installed Windows 11 Pro from bootable USB installation media and configured default storage partitions.
+  - **Enterprise Naming Convention:** Renamed the computer from default naming strings to a standardized asset format (`ZAF-PTA-WS01`) for inventory and tracking.
   - Completed initial workstation setup and verified successful operating system deployment and activation status.
 10. **Driver Integration & System Resiliency Baseline:**
-  - Installed AMD motherboard chipset drivers alongside dedicated LAN, GPU, and audio drivers.
+- Installed AMD motherboard chipset drivers alongside dedicated LAN, GPU, and audio drivers.
   - Verified all hardware components via Device Manager to ensure no missing, unknown, or yellow-flagged drivers remained.
   - **System Restore Configuration:** Enabled System Restore and generated a clean baseline restore point directly after driver verification to secure the device health status before third-party staging.
 11. **Enterprise Software Installation & Baseline Staging:**
-  - Installed and validated commonly deployed business productivity and support software including: **Microsoft Office (365 Apps)**, **Google Chrome**, **Adobe Acrobat Reader**, **7-Zip**, **Notepad++**, and **Visual Studio Code**.
+- Installed and validated commonly deployed business productivity and support software including: **Microsoft Office (365 Apps)**, **Google Chrome**, **Adobe Acrobat Reader**, **7-Zip**, **Notepad++**, and **Visual Studio Code**.
   - **Browser Configuration:** Standardized application settings across browsers, configuring homepages, default download paths, and verifying base security settings.
   - **Peripheral Verification & Printer Simulation:** Tested local hardware features (Speakers, Microphone, Ethernet, USB ports) and installed a default virtual printer pipeline (Microsoft Print to PDF) to simulate standard office printer setups.
-*(Suggested Visual: `image_e90933.jpg` — 4-panel build, Windows 11 Pro setup, and network connection collage)*
+
+![Image 1: 4-Panel Build, Windows 11 Pro Setup & Network Connection Collage (`image_e90933.jpg`)]
+![Image 2: Device Manager Driver Verification Screenshot]
+![Image 3: Installed Software Folder & Applications Screenshot]
+![Image 4: System Restore Point & `ZAF-PTA-WS01` System Properties Confirmation]
+![Image 5: Virtual Printer & Peripheral Verification Screenshot]
 
 ### Phase 4: Implementation & Security Hardening
 12. **Identity & Access Management (IAM):**
-- **Principle of Least Privilege (PoLP) Enforcement:** Successfully established strict Admin versus Standard user account segmentation across the workstation asset (`ZAF-JHB-WS01`).
+- **Principle of Least Privilege (PoLP) Enforcement:** Successfully established strict Admin versus Standard user account segmentation across the workstation asset (`ZAF-PTA-WS01`).
 - **IAM Control:** Segmented Backup-Admin privileges to ensure that only authorized administrative identities possess the explicit permissions required to modify, alter, or delete critical archives.
 - **Validation Action – Unauthorized Software Installation Test:** Simulated an unauthorized software installation payload from a Standard User account context to validate technical enforcement of the Principle of Least Privilege. 
   - **Execution Result:** The installation attempt was successfully blocked by User Account Control (UAC) and administrative permission policies.
@@ -211,16 +216,18 @@ Since Windows Firewall handles the "What" (the program), NextDNS was implemented
 
 ---
 
-# Layer 3: Behavioral Monitoring & Vulnerability Assessment
+## Layer 3: Behavioral Monitoring & Vulnerability / Patch Management
 
 ### Behavioral Logging (Sysmon)
 - **Non-Technical:** Like a security camera inside the office. The firewall stops people at the door, but Sysmon records if an employee starts acting strangely once they are inside.
 - **Technical:** It logs Process Injection and lateral movement, providing the visibility needed for a **SOC Analyst** to detect stealthy movement that the firewall trusts.
-
 ### Vulnerability Assessment (Nessus Essentials/OpenVAS)
 - **Non-Technical:** A "Home Inspection" for digital locks. It searches for windows left unlocked so they can be fixed before a thief finds them.
 - **Technical:** Implemented periodic scanning to find unpatched software. This allows for **Compensating Controls**—blocking specific binaries in the firewall until a patch is available.
-
+  
+### Vulnerability & Patch / Antivirus Management (Windows Update, Microsoft Defender & Nessus / OpenVAS)
+- **Non-Technical:** Checking **Windows Update** is like making sure the building's security system and locks have the latest upgrades, a **Microsoft Defender full-system scan** is like sweeping every room to make sure no hidden intruder is already inside, and a **vulnerability scan** is like checking for weak spots or outdated gear before an attacker exploits them.
+- **Technical:** Checked and applied **Windows Update** packages and **Microsoft Defender security intelligence definitions**, executed **full-system antivirus scans** to verify no active threats or remnants remained, and ran **Nessus Essentials / OpenVAS** checks to identify unpatched software—pairing remediation with **Compensating Controls** (such as outbound firewall rules) where needed.
 ---
 
 # Defense-in-Depth: Solving the Loopholes
